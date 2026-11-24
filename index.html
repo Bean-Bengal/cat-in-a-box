@@ -178,47 +178,48 @@
 <script>
 Kit.voxel({
   title: 'Cat in a Box', by: 'Bean',
-  note: 'A spotted cat in a cardboard box, ears over the rim.',
+  note: 'A spotted cat in a cardboard box, head tilted, one paw forward.',
   palette: { b: '#c8975a', d: '#9c6f3c', l: '#dcb479', f: '#d9a05b', s: '#4a3322', k: '#2a2622', p: '#e9a3a3', w: '#f4ecd8', g: '#7bbf5a' },
   mm: 2, spin: true, yaw: 0.4, pitch: 0.45,
   build(m) {
-    // box: x -16..15, z -12..11, walls 10 high
     m.box(-16, 0, -12, 32, 1, 24, 'd');
     m.box(-16, 1, -12, 32, 9, 24, 'b', true);
     m.box(-16, 9, -12, 32, 1, 24, 'l', true);
     m.box(-15, 1, -11, 30, 1, 22, 'd');
-    // body inside box
     m.ellipsoid(0, 9, 0, 9, 9, 7, 'f');
-    // tail out the back-left over rim
+    // tail curling up at the back
     m.line(8, 6, -6, 13, 11, -9, 'f');
-    m.line(13, 11, -9, 14, 15, -9, 's');
-    // head
-    m.ellipsoid(1, 19, 3, 8, 6, 6, 'f');
-    // ears
+    m.line(13, 11, -9, 14, 16, -9, 'f');
+    m.line(14, 16, -9, 12, 18, -9, 's');
+    // head, shifted a bit to one side
+    m.ellipsoid(2, 19, 3, 8, 6, 6, 'f');
     for (const sx of [-1, 1]) {
-      const ex = 1 + sx * 5;
-      m.box(ex - 1, 23, 3, 3, 4, 2, 'f');
-      m.set(ex, 27, 3, 'f');
+      const ex = 2 + sx * 5;
+      const top = sx < 0 ? 27 : 26;
+      m.box(ex - 1, 23, 3, 3, top - 23, 2, 'f');
+      m.set(ex, top, 3, 'f');
       m.set(ex, 24, 5, 'p');
       m.set(ex, 25, 5, 'p');
     }
     // face
-    m.box(-3, 19, 9, 2, 2, 1, 'k');
-    m.box(4, 19, 9, 2, 2, 1, 'k');
-    m.set(-3, 21, 9, 'w'); m.set(4, 21, 9, 'w');
-    m.box(0, 17, 9, 2, 1, 1, 'p');
-    m.set(-1, 16, 9, 'w'); m.set(2, 16, 9, 'w');
+    m.box(-2, 19, 9, 2, 2, 1, 'k');
+    m.box(5, 19, 9, 2, 2, 1, 'k');
+    m.set(-2, 21, 9, 'w'); m.set(5, 21, 9, 'w');
+    m.box(1, 17, 9, 2, 1, 1, 'p');
+    m.set(0, 16, 9, 'w'); m.set(3, 16, 9, 'w');
+    m.set(-4, 17, 9, 'w'); m.set(-5, 18, 9, 'w');
+    m.set(8, 17, 9, 'w'); m.set(9, 18, 9, 'w');
     // spots
-    m.set(-4, 23, 6, 's'); m.set(-3, 23, 6, 's'); m.set(5, 22, 6, 's');
+    m.set(-3, 23, 6, 's'); m.set(-2, 23, 6, 's'); m.set(6, 22, 6, 's');
     m.set(-6, 12, 7, 's'); m.set(5, 11, 7, 's'); m.set(6, 12, 7, 's');
-    // paws over front rim
-    m.box(-5, 8, 8, 3, 2, 3, 'w');
-    m.box(4, 8, 8, 3, 2, 3, 'w');
-    // front of box stays in front of body
+    // front of box
     m.box(-16, 1, 10, 32, 8, 2, 'b');
     m.box(-16, 9, 10, 32, 1, 2, 'l');
+    // left paw on rim, right paw forward over the front
     m.box(-5, 9, 10, 3, 2, 2, 'w');
-    m.box(4, 9, 10, 3, 2, 2, 'w');
+    m.box(4, 9, 10, 3, 2, 3, 'w');
+    m.box(4, 8, 12, 3, 2, 2, 'w');
+    m.box(4, 6, 12, 3, 2, 1, 'w');
   }
 });
 </script>
