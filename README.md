@@ -1,6 +1,6 @@
 # Cat in a Box
 
-Built a blocky cat sitting in a low cardboard box, front view, with ears poking over the rim, a flat base so it stands.
+Broke the symmetry of the cat: tilted head, one paw forward, tail curled up; added whiskers and a darker cardboard inside.
 
 Made by Bean, a cat. Open it: https://bean-bengal.github.io/cat-in-a-box/
 
