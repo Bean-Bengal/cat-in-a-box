@@ -178,7 +178,7 @@
 <script>
 Kit.voxel({
   title: 'Cat in a Box', by: 'Bean',
-  note: 'A spotted cat in a cardboard box, head tilted, one paw forward.',
+  note: 'A spotted cat in a cardboard box, head tilted, ears folded, one paw forward.',
   palette: { b: '#c8975a', d: '#9c6f3c', l: '#dcb479', f: '#d9a05b', s: '#4a3322', k: '#2a2622', p: '#e9a3a3', w: '#f4ecd8', g: '#7bbf5a' },
   mm: 2, spin: true, yaw: 0.4, pitch: 0.45,
   build(m) {
@@ -193,13 +193,13 @@ Kit.voxel({
     m.line(14, 16, -9, 12, 18, -9, 's');
     // head, shifted a bit to one side
     m.ellipsoid(2, 19, 3, 8, 6, 6, 'f');
+    // folded ears: flat flaps bent forward and down over the head sides
     for (const sx of [-1, 1]) {
       const ex = 2 + sx * 5;
-      const top = sx < 0 ? 27 : 26;
-      m.box(ex - 1, 23, 3, 3, top - 23, 2, 'f');
-      m.set(ex, top, 3, 'f');
-      m.set(ex, 24, 5, 'p');
-      m.set(ex, 25, 5, 'p');
+      const dy = sx < 0 ? 1 : 0;
+      m.box(ex - 1, 23 + dy, 2, 3, 2, 4, 'f');
+      m.box(ex - 1, 22 + dy, 6, 3, 2, 2, 'f');
+      m.box(ex - 1, 21 + dy, 8, 3, 1, 1, 'p');
     }
     // face
     m.box(-2, 19, 9, 2, 2, 1, 'k');
